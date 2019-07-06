@@ -81,8 +81,7 @@ public class MercuryGridTest {
               
         } else if(browser.equalsIgnoreCase("chrome")) {
             capability = DesiredCapabilities.chrome();
-            driver=new RemoteWebDriver(new URL("http://10.0.0.4:8990/wd/hub"),capability);
-              
+            driver=new RemoteWebDriver(new URL("http://10.0.0.4:8990/wd/hub"),capability);              
         }
         //platform
         if (os.equalsIgnoreCase("windows")) {
@@ -104,11 +103,11 @@ public class MercuryGridTest {
         driver.findElement(By.name("userName")).sendKeys("mercury");
         driver.findElement(By.name("password")).sendKeys("mercury");
         driver.findElement(By.name("login")).click();
-        Thread.sleep(1000);
-        try{
+       Thread.sleep(2000);
+       try{
             assertEquals("Find a Flight: Mercury Tours:", driver.getTitle());
             System.out.println("Login Successful");
-        }catch(Throwable t){
+            }catch(Throwable t){
            System.out.println("Login Not Successful");
         }
         driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[2]/td[2]/b/font/input[2]")).click();
@@ -182,10 +181,8 @@ public class MercuryGridTest {
         }
         driver.findElement(By.linkText("Hotels")).click();
         driver.findElement(By.linkText("Car Rentals")).click(); 
-        driver.close();
-        
-    } 
-    
+        driver.close();        
+    }     
 @Parameterized.Parameters(name = "{index}: MercuryGridTest({0},{1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
